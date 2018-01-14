@@ -3,7 +3,6 @@ jdk: oraclejdk8
 sudo: false
 script:
   - ant compile test-compile
-  - sbt clean coverage test
 after_success: "sbt coveralls"
 
 notifications:
