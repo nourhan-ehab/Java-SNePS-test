@@ -1,7 +1,6 @@
 package tests;
 
 import junit.framework.TestCase;
-import matching.Calculation;
 public class MathTest extends TestCase {
 private int value1;
 private int value2;
