@@ -1,7 +1,8 @@
 package tests;
 
 import junit.framework.TestCase;
-import Calculation;
+import main.Calculation;
+
 public class MathTest extends TestCase {
 private int value1;
 private int value2;
