@@ -3,6 +3,8 @@
   <property name="main.src.dir" value="src/"/>
   <property name="test.build.dir" value="build/test"/>
   <property name="test.src.dir" value="tests/"/>
+  <property name="result.report.dir" location="site/jacoco/" />
+  <property name="result.exec.file" location="$jacoco.exec" />
 	
 	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
 	      <classpath path="lib/jacocoant.jar"/>
@@ -31,7 +33,7 @@
   </target>
 
   <target name="test" depends="test-compile">
-  	<jacoco:coverage>
+  	<jacoco:coverage  destfile="${result.exec.file}">
     <junit printsummary="on" haltonfailure="yes" haltonerror="yes" fork="true">
         <classpath>
           <path refid="classpath.test"/>
@@ -43,6 +45,30 @@
         </batchtest>
     </junit>
   	</jacoco:coverage>
+  	
+  	
+		<jacoco:report>
+
+			<!-- This task needs the collected execution data and ... -->
+			<executiondata>
+				<file file="${result.exec.file}" />
+			</executiondata>
+
+			<!-- the class files and optional source files ... -->
+			<structure name="JaCoCo Ant Example">
+				<classfiles>
+					<fileset dir="${main.build.dir}" />
+				</classfiles>
+				<sourcefiles encoding="UTF-8">
+					<fileset dir="${main.src.dir}" />
+				</sourcefiles>
+			</structure>
+
+			<!-- to produce reports in different formats. -->
+			<html destdir="${result.report.dir}" />
+			<csv destfile="${result.report.dir}/report.csv" />
+			<xml destfile="${result.report.dir}/report.xml" />
+		</jacoco:report>
   	
   </target>
 	
