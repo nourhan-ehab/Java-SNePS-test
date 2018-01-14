@@ -4,7 +4,7 @@
   <property name="test.build.dir" value="build/test"/>
   <property name="test.src.dir" value="tests/"/>
   <property name="result.report.dir" location="site/jacoco/" />
-  <property name="result.exec.file" location="$jacoco.exec" />
+  <property name="result.exec.file" location="jacoco.exec" />
 	
 	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
 	      <classpath path="lib/jacocoant.jar"/>
