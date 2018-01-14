@@ -1,8 +1,12 @@
-<project name="java-sneps">
+<project name="java-sneps" xmlns:jacoco="antlib:org.jacoco.ant">
   <property name="main.build.dir" value="build/"/>
   <property name="main.src.dir" value="src/"/>
   <property name="test.build.dir" value="build/test"/>
   <property name="test.src.dir" value="tests/"/>
+	
+	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+	      <classpath path="lib/jacocoant.jar"/>
+	</taskdef>
 
   <path id="classpath.test">
     <pathelement location="lib/junit.jar"/>
@@ -27,6 +31,7 @@
   </target>
 
   <target name="test" depends="test-compile">
+  	<jacoco:coverage>
     <junit printsummary="on" haltonfailure="yes" haltonerror="yes" fork="true">
         <classpath>
           <path refid="classpath.test"/>
@@ -37,5 +42,8 @@
             <fileset dir="${test.build.dir}" includes="**/*Test.class" />
         </batchtest>
     </junit>
+  	</jacoco:coverage>
+  	
   </target>
+	
 </project>
