@@ -3,9 +3,5 @@ jdk: oraclejdk8
 sudo: false
 script:
   - ant compile test-compile
-after_success: "sbt coveralls"
-
-notifications:
-  email:
-    recipients:
-      - nourhan.ehab@guc.edu.eg
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
