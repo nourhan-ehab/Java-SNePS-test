@@ -21,19 +21,15 @@
 
   <target name="compile">
     <mkdir dir="${main.build.dir}"/>
-    <jacoco:coverage  destfile="${result.exec.file}">
     <javac srcdir="${main.src.dir}" destdir="${main.build.dir}" includeantruntime="false">
     	</javac>
-    </jacoco:coverage>
   </target>
 
   <target name="test-compile" depends="compile">
     <mkdir dir="${test.build.dir}"/>
-	<jacoco:coverage  destfile="${result.exec.file}">
     <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false" debug="on">
     	<classpath refid="classpath.test"/>
     </javac>
-</jacoco:coverage>
   </target>
 
   <target name="test" depends="test-compile">
