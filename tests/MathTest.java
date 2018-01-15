@@ -8,6 +8,7 @@ private int value1;
 private int value2;
 public MathTest(String testName) {
 super(testName);
+Calculation c = new Calculation();
 }
 protected void setUp() throws Exception {
 super.setUp();
