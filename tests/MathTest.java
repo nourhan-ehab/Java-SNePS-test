@@ -31,5 +31,10 @@ int total = 9;
 int sum = Calculation.add(value1, value2);
 assertNotSame(sum, total);
 }
+public void testSub() {
+ int total = 0;
+ int sub = Calculation.sub(4, 4);
+ assertEquals(sub, total);
+}
 
 }
